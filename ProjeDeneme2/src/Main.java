@@ -5,13 +5,15 @@ public class Main {
 
         String[] card52InOrder = CardCreator.create52CardInOrder();     // Created 52 card in order
         String[] mixed52Card = CardCreator.shuttleCards(card52InOrder); // send 52 which are in order to the mixer
-        String[] card40AfterDistribution = CardCreator.distributeCards(mixed52Card);
 
-        CardCreator.distributeCards(mixed52Card);
+        // when the game start !!!
+        String[] distributeCards40 =  CardCreator.distributeCards();
+        String[] Player4Card =  CardCreator.getPlayer4Card();
+        String[] Computer4Card =  CardCreator.getComputer4Card();
+        String[] Middle4Card =  CardCreator.getMiddle4Card();
 
-        for (int i =0; i<40;i++){
-            System.out.println(card40AfterDistribution[i]);
-        }
+        GameMechanics Mechanics = new GameMechanics(distributeCards40,Player4Card,Computer4Card,Middle4Card);
 
+        Mechanics.control();
     }
 }
