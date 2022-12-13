@@ -14,6 +14,6 @@ public class Main {
 
         GameMechanics Mechanics = new GameMechanics(distributeCards40,Player4Card,Computer4Card,Middle4Card);
 
-        Mechanics.control();
+        Mechanics.playerPlayCardsFirst4Card();
     }
 }
