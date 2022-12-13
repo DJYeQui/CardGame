@@ -15,6 +15,10 @@ public class Main {
         GameMechanics Mechanics = new GameMechanics(distributeCards40,Player4Card,Computer4Card,Middle4Card);
 
 
-        String[] a = Mechanics.playerPlayCardsFirst4Card();
+        Mechanics.playerPlayCardsFirst4Card();
+        for (int i = 0 ; i<5; i++){
+            Mechanics.playerPlayCardsContinuous4Card();
+        }
+
     }
 }
