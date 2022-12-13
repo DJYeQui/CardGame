@@ -158,6 +158,9 @@ public class GameMechanics {
                 computer4Card[j] = distributeCards40[counterPlayerPlayCardsContinuous4Card];
                 counterPlayerPlayCardsContinuous4Card++;
             }
+            if (counterPlayerPlayCardsContinuous4Card>=31){
+                System.out.println("THAT IS THE LAST ROUND -------------------------------------------------------");
+            }
 
             // Game Continuous here
             for (int i  = 0; i<4 ; i++){
@@ -264,7 +267,6 @@ public class GameMechanics {
                 }
             }
         }
-        
         return cardCollectMiddle;
     }
 }
