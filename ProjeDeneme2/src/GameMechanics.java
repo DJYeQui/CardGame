@@ -50,6 +50,7 @@ public class GameMechanics {
         Scanner sc = new Scanner(System.in);
         Random random = new Random(System.currentTimeMillis());
 
+
         for (int i = 0; i<4;i++){
 
             // Show the player card
@@ -59,40 +60,35 @@ public class GameMechanics {
                 }
             }
 
-            System.out.println("---------------------------------------------");
+            // Show the cardCollectMiddle last index
+            System.out.println("----------------Middle Card-----------------");
+            for (int j = 0; j<52; j++){
+                int a = 51;
+                if (cardCollectMiddle[a-j]!=null){
+                    System.out.println(cardCollectMiddle[a-j]);
+                    break;
+                }
+            }
+
             System.out.println("pls enter a value which is next to the cards");
             int indexPlayerCard = sc.nextInt(); // take value for play a card
 
             //transport the values to cardCollectMiddle
             cardCollectMiddle[2*i+4] = player4Card[indexPlayerCard];
             player4Card[indexPlayerCard]=null;  // instead  of delete
-            pointCounterPlayer(2*i+4);
+            pointCounter(2*i+4);
 
             cardCollectMiddle[2*i+5] = computer4Card[i];
             computer4Card[i]=null;
+            pointCounter(2*i+5);
 
-            // Show the cardCollectMiddle
-            System.out.println("----------------Middle Card-----------------");
-            for (int j = 0; j <cardCollectMiddle.length; j++){
-                if (cardCollectMiddle[j]!=null){
-                    System.out.println(cardCollectMiddle[j]);
-                }
-            }
-            System.out.println("---------------------------------------------");
-
-//            //show the computer cards
-//            for (int j = 0; j <4; j++){
-//                if (computer4Card[j]!=null){
-//                    System.out.println(computer4Card[j]);
-//                }
-//            }
-//            System.out.println("---------------------------------------------");
-
-            pointCounterPlayer(2*i+5);
         }
         return cardCollectMiddle;
     }
-    public void pointCounterPlayer(int indexElement1){
+
+
+
+    public String[] pointCounter(int indexElement1){
         char num1= '1';
         char num2= '2';
 
@@ -112,6 +108,7 @@ public class GameMechanics {
                 for (int i = 0; i<52; i++){
                     if (cardCollectMiddle!=null){counter++;}
                     if (counter==2){
+                        System.out.println("PİŞTİ");
                         pointPistiPlayer = pointPistiComputer + 10;
                     }
                 }
@@ -127,6 +124,7 @@ public class GameMechanics {
                 for (int i = 0; i<52; i++){
                     if (cardCollectMiddle!=null){counter++;}
                     if (counter==2){
+                        System.out.println("PİŞTİ");
                         pointPistiComputer = pointPistiComputer + 10;
                     }
                 }
@@ -137,5 +135,18 @@ public class GameMechanics {
                 }
             }
         }
+        return cardCollectMiddle;
     }
+
+    public void  playerPlayCardsContinuous4Card(String[]  cardCollectedMiddleAfter4Card){  // this will call 5 times
+        //distribute 4 card to player
+        //distribute 4 card to computer
+        //Player play
+        //Check for point
+        //Computer play
+        //check for point
+
+        //write the player and computer points
+    }
+
 }
