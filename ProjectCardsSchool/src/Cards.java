@@ -21,10 +21,6 @@ public class Cards {
         return card52;
     }
 
-    public Cards() {
-        super();
-    }
-
     public String[] mix52Cards(){
 
         Random arr = new Random(System.currentTimeMillis());
@@ -37,7 +33,6 @@ public class Cards {
             deck52[index] = deck52[randomNumber];
             deck52[randomNumber] = storedOldVale;
         }
-
         return deck52;
     }
 }
