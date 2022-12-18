@@ -83,6 +83,7 @@ public class Mechanics {
                 break;
             }
         }
+        
         return lastElementIndex;
     }
 }
