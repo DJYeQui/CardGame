@@ -8,6 +8,5 @@ public class Main {
         Game.preparationGame();
         Game.playCards();
 
-
     }
 }
