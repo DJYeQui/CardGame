@@ -93,13 +93,10 @@ public class Mechanics {
 
             //==========================================Computer=============================================//
             //Write AI for decide the card index as a computer
-            //index = will declare by AI
-
-
             //send the card to the middleCollectedCard
             //computer[i]=null
-            middleCollectedCard[lastElementMiddleCollectedCard()]=computer4Card[index];
-            computer4Card[index]=null;
+            computerPlayCard();
+
 
             //check the points computer
             //for prevent the null error if added
@@ -117,7 +114,31 @@ public class Mechanics {
 
 
 
+    public void computerPlayCard(){
+        int lastElementMiddleCollectedCardAfterPlayer=lastElementMiddleCollectedCard();
+        boolean controlWhichOneExecute = false;
 
+        if (lastElementMiddleCollectedCardAfterPlayer >1){
+            for (int i = 0; i < 4; i++){
+                if (computer4Card[i]==middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer-1]){
+                    middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer]=computer4Card[i];
+                    computer4Card[i] = null;
+                    controlWhichOneExecute=true;
+                    break;
+                }
+            }
+        }
+
+        if (controlWhichOneExecute==false){
+            for (int i = 0; i < 4; i++){
+                if (computer4Card[i]!=null){
+                    middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer]=computer4Card[i];
+                    computer4Card[i] = null;
+                    break;
+                }
+            }
+        }
+    }
     public void pointCounterComputer(){
         int lastElementIndex = lastElementMiddleCollectedCard();
         if (lastElementIndex==2 && middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
