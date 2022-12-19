@@ -85,11 +85,20 @@ public class Mechanics {
             middleCollectedCard[lastElementOfMiddleCollectedCardArray]=player4Card[playerInput];
             player4Card[playerInput]=null;
 
-            //check the points
-            pointCounterPlayer();
+            //check the points player
+            if (lastElementMiddleCollectedCard()>=2){
+                pointCounterPlayer();
+            }
 
+
+            //==========================================Computer=============================================//
             middleCollectedCard[lastElementMiddleCollectedCard()]=computer4Card[index];
             computer4Card[index]=null;
+
+            //check the points computer
+            if (lastElementMiddleCollectedCard()>=2){
+                pointCounterComputer();
+            }
 
 
         }
@@ -102,7 +111,29 @@ public class Mechanics {
 
 
 
+    public void pointCounterComputer(){
+        int lastElementIndex = lastElementMiddleCollectedCard();
+        if (lastElementIndex==2 && middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
 
+            computerScore += 10;
+            for (int i = 0; middleCollectedCard[i]!=null;i++){
+                int point = cardValueList(middleCollectedCard[i]);
+                computerScore = computerScore + point;
+                middleCollectedCard[i]=null;}
+
+            System.out.println("player point: "+ computerScore);
+
+        }
+        if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
+
+            for (int i = 0; middleCollectedCard[i]!=null;i++){
+                int point = cardValueList(middleCollectedCard[i]);
+                computerScore = computerScore + point;
+                middleCollectedCard[i]=null;}
+
+            System.out.println("player point: "+ computerScore);
+        }
+    }
     //check the points
     public void pointCounterPlayer(){
         int lastElementIndex = lastElementMiddleCollectedCard();
@@ -111,7 +142,9 @@ public class Mechanics {
             playerScore += 10;
             for (int i = 0; middleCollectedCard[i]!=null;i++){
                 int point = cardValueList(middleCollectedCard[i]);
-                playerScore = playerScore + point;}
+                playerScore = playerScore + point;
+                middleCollectedCard[i]=null;}
+
             System.out.println("player point: "+ playerScore);
 
         }
@@ -119,7 +152,9 @@ public class Mechanics {
 
             for (int i = 0; middleCollectedCard[i]!=null;i++){
                 int point = cardValueList(middleCollectedCard[i]);
-                playerScore = playerScore + point;}
+                playerScore = playerScore + point;
+                middleCollectedCard[i]=null;}
+
             System.out.println("player point: "+ playerScore);
         }
     }
