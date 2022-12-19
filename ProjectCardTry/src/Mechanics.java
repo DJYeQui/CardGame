@@ -37,7 +37,6 @@ public class Mechanics {
     }
 
 
-
     public void playCards(){
 
         // ♠10 = 2th
