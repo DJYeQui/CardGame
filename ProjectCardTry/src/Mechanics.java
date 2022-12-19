@@ -142,7 +142,7 @@ public class Mechanics {
                 System.out.println("computer point: "+ computerScore);
             }
         }
-        
+
     }
     //check the points
     public void pointCounterPlayer(){
@@ -239,5 +239,12 @@ public class Mechanics {
             counter++;
         }
         return counter;
+    }
+
+    public int getPlayScore(){
+        return playerScore;
+    }
+    public int getComputerScore(){
+        return computerScore;
     }
 }
