@@ -72,6 +72,14 @@ public class Mechanics {
                 }
             }
 
+            // this added for check the computer pisti scanner
+            System.out.println("-----------computer cards-----------");
+            for (int i = 0; i<4 ;i++){
+                if (computer4Card[i]!=null){
+                    System.out.println(computer4Card[i]);
+                }
+            }
+
             //take input from player
             //control the input
             int playerInput = controlCard();
@@ -118,13 +126,16 @@ public class Mechanics {
         int lastElementMiddleCollectedCardAfterPlayer=lastElementMiddleCollectedCard();
         boolean controlWhichOneExecute = false;
 
+        // if player gain point middleCollectCard become empty and that create problem
         if (lastElementMiddleCollectedCardAfterPlayer >1){
             for (int i = 0; i < 4; i++){
-                if (computer4Card[i]==middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer-1]){
-                    middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer]=computer4Card[i];
-                    computer4Card[i] = null;
-                    controlWhichOneExecute=true;
-                    break;
+                if (computer4Card[i]!=null){
+                    if (computer4Card[i].substring(1,3).equals(middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer-1].substring(1,3))){
+                        middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer]=computer4Card[i];
+                        computer4Card[i] = null;
+                        controlWhichOneExecute=true;
+                        break;
+                    }
                 }
             }
         }
