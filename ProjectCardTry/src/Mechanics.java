@@ -131,15 +131,18 @@ public class Mechanics {
             System.out.println("computer point: "+ computerScore);
 
         }
-        if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
+        else {
+            if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
 
-            for (int i = 0; middleCollectedCard[i]!=null;i++){
-                int point = cardValueList(middleCollectedCard[i]);
-                computerScore = computerScore + point;
-                middleCollectedCard[i]=null;}
+                for (int i = 0; middleCollectedCard[i]!=null;i++){
+                    int point = cardValueList(middleCollectedCard[i]);
+                    computerScore = computerScore + point;
+                    middleCollectedCard[i]=null;}
 
-            System.out.println("computer point: "+ computerScore);
+                System.out.println("computer point: "+ computerScore);
+            }
         }
+        
     }
     //check the points
     public void pointCounterPlayer(){
@@ -153,16 +156,17 @@ public class Mechanics {
                 middleCollectedCard[i]=null;}
 
             System.out.println("player point: "+ playerScore);
-
         }
-        if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
+        else {
+            if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
 
-            for (int i = 0; middleCollectedCard[i]!=null;i++){
-                int point = cardValueList(middleCollectedCard[i]);
-                playerScore = playerScore + point;
-                middleCollectedCard[i]=null;}
+                for (int i = 0; middleCollectedCard[i]!=null;i++){
+                    int point = cardValueList(middleCollectedCard[i]);
+                    playerScore = playerScore + point;
+                    middleCollectedCard[i]=null;}
 
-            System.out.println("player point: "+ playerScore);
+                System.out.println("player point: "+ playerScore);
+            }
         }
     }
     public int cardValueList(String gainedCard){
