@@ -10,7 +10,7 @@ public class Main {
             Game.playCards();}
 
         int playerScore = Game.getPlayScore();
-        int computerScore = Game.getPlayScore();
+        int computerScore = Game.getComputerScore();
         ScoreList scoreList = new ScoreList(playerScore,computerScore);
 
     }
