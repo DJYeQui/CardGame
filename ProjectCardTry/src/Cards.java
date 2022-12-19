@@ -4,7 +4,6 @@ public class Cards {
     private String[] cardsValue = {"2","3","4","5","6","7","8","9","10","A","J","Q","K"};
     private String[] cardsShapes = {"♠","♣","♥","♦"};
 
-
     public String[] card52(){
         String[] card52 = new String[52];
         String combineValueShape;
