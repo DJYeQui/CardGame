@@ -8,7 +8,6 @@ public class Mechanics {
     private String[] middleCollectedCard = new String[52];
     private String[] player4Card = new String[4];
     private String[] computer4Card = new String[4];
-    String[] listIndex = {"0", "1", "2", "3"};
 
     public Mechanics(String[] mixedCardDeck52) {
 
