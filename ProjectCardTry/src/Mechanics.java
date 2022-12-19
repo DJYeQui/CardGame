@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Mechanics {
-    private int playerScoreCard = 0;
-    private int computerScoreCard = 0;
+    private int playerScore = 0;
+    private int computerScore = 0;
     private int preparationGameCardsDistribute = 0;
     private String[] mixed48Card = new String[48];
     private String[] middleCollectedCard = new String[52];
@@ -37,6 +37,7 @@ public class Mechanics {
     }
 
 
+
     public void playCards(){
 
         // ♠10 = 2th
@@ -56,6 +57,7 @@ public class Mechanics {
         //------------------------------------------------------------------------------------------------------------//
 
         for (int index = 0; index<4;index++){
+
             //show the middle cards
             System.out.println("-----------middle cards-----------");
             for (int i = 0; middleCollectedCard[i]!=null ;i++){
@@ -75,13 +77,21 @@ public class Mechanics {
             int playerInput = controlCard();
 
             //find the last element of middleCollectedCard
-            //this method find the first null place in array/ I can use directly
+            //this method find the first null element index in array/ I can use directly for declare something
             int lastElementOfMiddleCollectedCardArray = lastElementMiddleCollectedCard();
 
             //send the card to the middleCollectedCard
             //card[i]=null
             middleCollectedCard[lastElementOfMiddleCollectedCardArray]=player4Card[playerInput];
             player4Card[playerInput]=null;
+
+            //check the points
+            pointCounterPlayer();
+
+            middleCollectedCard[lastElementMiddleCollectedCard()]=computer4Card[index];
+            computer4Card[index]=null;
+
+
         }
 
     }
@@ -93,8 +103,34 @@ public class Mechanics {
 
 
 
+    //check the points
+    public void pointCounterPlayer(){
+        int lastElementIndex = lastElementMiddleCollectedCard();
+        if (lastElementIndex==2 && middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
 
+            playerScore += 10;
+            for (int i = 0; middleCollectedCard[i]!=null;i++){
+                int point = cardValueList(middleCollectedCard[i]);
+                playerScore = playerScore + point;}
+            System.out.println("player point: "+ playerScore);
 
+        }
+        if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
+
+            for (int i = 0; middleCollectedCard[i]!=null;i++){
+                int point = cardValueList(middleCollectedCard[i]);
+                playerScore = playerScore + point;}
+            System.out.println("player point: "+ playerScore);
+        }
+    }
+    public int cardValueList(String gainedCard){
+        if (gainedCard.substring(0,3).equals("♦10")){
+            return 3;}
+        else if (gainedCard.substring(0,2).equals("♣2")){
+            return 2;}
+
+        else {return 1;}
+    }
     public int controlCard(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Pls enter cards order number which is written next to the card");
@@ -121,8 +157,6 @@ public class Mechanics {
             return controlCard();
         }
     }
-
-
     public boolean isThereCardSelected(int controlledIndex){
         //control is there card in player cards
         try {
@@ -142,7 +176,8 @@ public class Mechanics {
                     if (num1==numSelected){
                         return true;
                     }
-                }catch (Exception e){
+                }
+                catch (Exception e){
                     continue;
                 }
 
@@ -152,7 +187,6 @@ public class Mechanics {
         }
         return false;
     }
-
     public int lastElementMiddleCollectedCard(){
         int counter = 0;
         for (int i = 0; middleCollectedCard[i]!=null;i++){
