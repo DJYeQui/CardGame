@@ -8,74 +8,73 @@ public class Mechanics {
     private String[] middleCollectedCard = new String[52];
     private String[] player4Card = new String[4];
     private String[] computer4Card = new String[4];
-    String[] listIndex = {"0","1","2","3"};
+    String[] listIndex = {"0", "1", "2", "3"};
 
-    public Mechanics(String[] mixedCardDeck52){
+    public Mechanics(String[] mixedCardDeck52) {
 
         //  4 cards added to middle
-        for (int index = 0; index <4; index++){
-            middleCollectedCard[index] = mixedCardDeck52[index] + " = " + index+"th";
+        for (int index = 0; index < 4; index++) {
+            middleCollectedCard[index] = mixedCardDeck52[index] + " = " + index + "th";
         }
 
         // other 48 card sent to the mixed48Card for use in other method
-        System.arraycopy(mixedCardDeck52,4,mixed48Card,0,mixed48Card.length);   //48 card stored for distribution in to the preparationGame
+        System.arraycopy(mixedCardDeck52, 4, mixed48Card, 0, mixed48Card.length);   //48 card stored for distribution in to the preparationGame
     }
 
-    public void preparationGame(){
+    public void preparationGame() {
         // preparationGameCardsDistribute:  is a counter for these 2 loop till 48
         // player4Card elements added
         for (int cardIndexPlayer = 0; cardIndexPlayer < 4; cardIndexPlayer++) {
-            player4Card[cardIndexPlayer] = mixed48Card[preparationGameCardsDistribute]+ " = " + cardIndexPlayer+"th";   // 3,11,19,27,35,43
+            player4Card[cardIndexPlayer] = mixed48Card[preparationGameCardsDistribute] + " = " + cardIndexPlayer + "th";   // 3,11,19,27,35,43
             preparationGameCardsDistribute++;    // last element indexes values: 4,12,20,28,36,44
         }
 
         // computer4Card elements added
         for (int cardIndexPlayer = 0; cardIndexPlayer < 4; cardIndexPlayer++) {  //  7,15,23,31,39,47
-            computer4Card[cardIndexPlayer] = mixed48Card[preparationGameCardsDistribute]+ " = " + cardIndexPlayer+"th";
+            computer4Card[cardIndexPlayer] = mixed48Card[preparationGameCardsDistribute] + " = " + cardIndexPlayer + "th";
             preparationGameCardsDistribute++;    // last elements indexes values: 8,16,24,32,40,48
         }
     }
 
 
-
-    public void playCards(){
+    public void playCards() {
 
         // ♠10 = 2th
         //for 4 times play this
-            //show the middle cards
-            //show the players cards
-            //take input from player
-            //control the input
-            //control is there card in player card
-            //find the last element of middleCollectedCard
-            //send the card to the middleCollectedCard
-            //card[i]=null
-            //check the points
-            //computer play card
-            //computer[i]=null
-            //check point
+        //show the middle cards
+        //show the players cards
+        //take input from player
+        //control the input
+        //control is there card in player card
+        //find the last element of middleCollectedCard
+        //send the card to the middleCollectedCard
+        //card[i]=null
+        //check the points
+        //computer play card
+        //computer[i]=null
+        //check point
         //------------------------------------------------------------------------------------------------------------//
 
-        for (int index = 0; index<4;index++){
+        for (int index = 0; index < 4; index++) {
 
             //show the middle cards
             System.out.println("-----------middle cards-----------");
-            for (int i = 0; middleCollectedCard[i]!=null ;i++){
-                System.out.println(middleCollectedCard[i].substring(0,3));
+            for (int i = 0; middleCollectedCard[i] != null; i++) {
+                System.out.println(middleCollectedCard[i].substring(0, 3));
             }
 
             //show the players cards
             System.out.println("-----------player cards-----------");
-            for (int i = 0; i<4 ;i++){
-                if (player4Card[i]!=null){
+            for (int i = 0; i < 4; i++) {
+                if (player4Card[i] != null) {
                     System.out.println(player4Card[i]);
                 }
             }
 
             // this added for check the computer pisti scanner
             System.out.println("-----------computer cards-----------");
-            for (int i = 0; i<4 ;i++){
-                if (computer4Card[i]!=null){
+            for (int i = 0; i < 4; i++) {
+                if (computer4Card[i] != null) {
                     System.out.println(computer4Card[i]);
                 }
             }
@@ -90,11 +89,11 @@ public class Mechanics {
 
             //send the card to the middleCollectedCard
             //card[i]=null
-            middleCollectedCard[lastElementOfMiddleCollectedCardArray]=player4Card[playerInput];
-            player4Card[playerInput]=null;
+            middleCollectedCard[lastElementOfMiddleCollectedCardArray] = player4Card[playerInput];
+            player4Card[playerInput] = null;
 
             //check the points player
-            if (lastElementMiddleCollectedCard()>=2){
+            if (lastElementMiddleCollectedCard() >= 2) {
                 pointCounterPlayer();
             }
 
@@ -108,7 +107,7 @@ public class Mechanics {
 
             //check the points computer
             //for prevent the null error if added
-            if (lastElementMiddleCollectedCard()>=2){
+            if (lastElementMiddleCollectedCard() >= 2) {
                 pointCounterComputer();
             }
 
@@ -118,98 +117,101 @@ public class Mechanics {
     }
 
 
-
-
-
-
-    public void computerPlayCard(){
-        int lastElementMiddleCollectedCardAfterPlayer=lastElementMiddleCollectedCard();
+    public void computerPlayCard() {
+        int lastElementMiddleCollectedCardAfterPlayer = lastElementMiddleCollectedCard();
         boolean controlWhichOneExecute = false;
 
         // if player gain point middleCollectCard become empty and that create problem
-        if (lastElementMiddleCollectedCardAfterPlayer >1){
-            for (int i = 0; i < 4; i++){
-                if (computer4Card[i]!=null){
-                    if (computer4Card[i].substring(1,3).equals(middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer-1].substring(1,3))){
-                        middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer]=computer4Card[i];
+        if (lastElementMiddleCollectedCardAfterPlayer >= 1) {
+            for (int i = 0; i < 4; i++) {
+                if (computer4Card[i] != null) {
+                    if (computer4Card[i].substring(1, 3).equals(middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer - 1].substring(1, 3))) {
+                        middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer] = computer4Card[i];
                         computer4Card[i] = null;
-                        controlWhichOneExecute=true;
+                        controlWhichOneExecute = true;
                         break;
                     }
                 }
             }
         }
 
-        if (controlWhichOneExecute==false){
-            for (int i = 0; i < 4; i++){
-                if (computer4Card[i]!=null){
-                    middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer]=computer4Card[i];
+        if (controlWhichOneExecute == false) {
+            for (int i = 0; i < 4; i++) {
+                if (computer4Card[i] != null) {
+                    middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer] = computer4Card[i];
                     computer4Card[i] = null;
                     break;
                 }
             }
         }
     }
-    public void pointCounterComputer(){
+
+    public void pointCounterComputer() {
         int lastElementIndex = lastElementMiddleCollectedCard();
-        if (lastElementIndex==2 && middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
+        if (lastElementIndex == 2 && middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
 
             computerScore += 10;
-            for (int i = 0; middleCollectedCard[i]!=null;i++){
+            for (int i = 0; middleCollectedCard[i] != null; i++) {
                 int point = cardValueList(middleCollectedCard[i]);
                 computerScore = computerScore + point;
-                middleCollectedCard[i]=null;}
+                middleCollectedCard[i] = null;
+            }
 
-            System.out.println("computer point: "+ computerScore);
+            System.out.println("computer point: " + computerScore);
 
-        }
-        else {
-            if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
+        } else {
+            if (middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
 
-                for (int i = 0; middleCollectedCard[i]!=null;i++){
+                for (int i = 0; middleCollectedCard[i] != null; i++) {
                     int point = cardValueList(middleCollectedCard[i]);
                     computerScore = computerScore + point;
-                    middleCollectedCard[i]=null;}
+                    middleCollectedCard[i] = null;
+                }
 
-                System.out.println("computer point: "+ computerScore);
+                System.out.println("computer point: " + computerScore);
             }
         }
 
     }
+
     //check the points
-    public void pointCounterPlayer(){
+    public void pointCounterPlayer() {
         int lastElementIndex = lastElementMiddleCollectedCard();
-        if (lastElementIndex==2 && middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
+        if (lastElementIndex == 2 && middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
 
             playerScore += 10;
-            for (int i = 0; middleCollectedCard[i]!=null;i++){
+            for (int i = 0; middleCollectedCard[i] != null; i++) {
                 int point = cardValueList(middleCollectedCard[i]);
                 playerScore = playerScore + point;
-                middleCollectedCard[i]=null;}
+                middleCollectedCard[i] = null;
+            }
 
-            System.out.println("player point: "+ playerScore);
-        }
-        else {
-            if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
+            System.out.println("player point: " + playerScore);
+        } else {
+            if (middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
 
-                for (int i = 0; middleCollectedCard[i]!=null;i++){
+                for (int i = 0; middleCollectedCard[i] != null; i++) {
                     int point = cardValueList(middleCollectedCard[i]);
                     playerScore = playerScore + point;
-                    middleCollectedCard[i]=null;}
+                    middleCollectedCard[i] = null;
+                }
 
-                System.out.println("player point: "+ playerScore);
+                System.out.println("player point: " + playerScore);
             }
         }
     }
-    public int cardValueList(String gainedCard){
-        if (gainedCard.substring(0,3).equals("♦10")){
-            return 3;}
-        else if (gainedCard.substring(0,2).equals("♣2")){
-            return 2;}
 
-        else {return 1;}
+    public int cardValueList(String gainedCard) {
+        if (gainedCard.substring(0, 3).equals("♦10")) {
+            return 3;
+        } else if (gainedCard.substring(0, 2).equals("♣2")) {
+            return 2;
+        } else {
+            return 1;
+        }
     }
-    public int controlCard(){
+
+    public int controlCard() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Pls enter cards order number which is written next to the card");
         int takenInput;
@@ -217,66 +219,66 @@ public class Mechanics {
         //input type and interval control
         try {
             takenInput = sc.nextInt();
-            if (takenInput>=4 || takenInput<0){
+            if (takenInput >= 4 || takenInput < 0) {
                 System.out.println("input have to be in [0,4) interval");
                 controlCard();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("this input can not use");
             return controlCard();
         }
 
         // is there a card in player cards
-        if (isThereCardSelected(takenInput)==true){
+        if (isThereCardSelected(takenInput) == true) {
             return takenInput;
-        }
-        else {
+        } else {
             return controlCard();
         }
     }
-    public boolean isThereCardSelected(int controlledIndex){
+
+    public boolean isThereCardSelected(int controlledIndex) {
         //control is there card in player cards
         try {
-            int lengthOfElementSelected=player4Card[controlledIndex].length();
-            char selectedCard = player4Card[controlledIndex].charAt(lengthOfElementSelected-3);
+            int lengthOfElementSelected = player4Card[controlledIndex].length();
+            char selectedCard = player4Card[controlledIndex].charAt(lengthOfElementSelected - 3);
 
             int numSelected = Character.valueOf(selectedCard);
 
             // if ith element is null that create a problem so I used try catch for solve it
-            for (int i = 0; i<4; i++){
-                try{
-                    int lengthOfElement=player4Card[i].length();
-                    char cardsLast3 = player4Card[i].charAt(lengthOfElement-3);
+            for (int i = 0; i < 4; i++) {
+                try {
+                    int lengthOfElement = player4Card[i].length();
+                    char cardsLast3 = player4Card[i].charAt(lengthOfElement - 3);
 
                     int num1 = Character.valueOf(cardsLast3);
 
-                    if (num1==numSelected){
+                    if (num1 == numSelected) {
                         return true;
                     }
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     continue;
                 }
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("there is a problem try again");
         }
         return false;
     }
-    public int lastElementMiddleCollectedCard(){
+
+    public int lastElementMiddleCollectedCard() {
         int counter = 0;
-        for (int i = 0; middleCollectedCard[i]!=null;i++){
+        for (int i = 0; middleCollectedCard[i] != null; i++) {
             counter++;
         }
         return counter;
     }
 
-    public int getPlayScore(){
+    public int getPlayScore() {
         return playerScore;
     }
-    public int getComputerScore(){
+
+    public int getComputerScore() {
         return computerScore;
     }
 }
