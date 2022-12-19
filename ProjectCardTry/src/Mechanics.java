@@ -92,10 +92,17 @@ public class Mechanics {
 
 
             //==========================================Computer=============================================//
+            //Write AI for decide the card index as a computer
+            //index = will declare by AI
+
+
+            //send the card to the middleCollectedCard
+            //computer[i]=null
             middleCollectedCard[lastElementMiddleCollectedCard()]=computer4Card[index];
             computer4Card[index]=null;
 
             //check the points computer
+            //for prevent the null error if added
             if (lastElementMiddleCollectedCard()>=2){
                 pointCounterComputer();
             }
@@ -121,7 +128,7 @@ public class Mechanics {
                 computerScore = computerScore + point;
                 middleCollectedCard[i]=null;}
 
-            System.out.println("player point: "+ computerScore);
+            System.out.println("computer point: "+ computerScore);
 
         }
         if (middleCollectedCard[lastElementIndex-1].substring(1,3).equals(middleCollectedCard[lastElementIndex-2].substring(1,3))){
@@ -131,7 +138,7 @@ public class Mechanics {
                 computerScore = computerScore + point;
                 middleCollectedCard[i]=null;}
 
-            System.out.println("player point: "+ computerScore);
+            System.out.println("computer point: "+ computerScore);
         }
     }
     //check the points
