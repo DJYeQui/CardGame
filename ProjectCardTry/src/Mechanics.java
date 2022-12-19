@@ -59,8 +59,11 @@ public class Mechanics {
 
             //show the middle cards
             System.out.println("-----------middle cards-----------");
-            for (int i = 0; middleCollectedCard[i] != null; i++) {
-                System.out.println(middleCollectedCard[i].substring(0, 3));
+            for (int i = 51; i >= 0; i--) {
+                if (middleCollectedCard[i] != null) {
+                    System.out.println(middleCollectedCard[i].substring(0, 3));
+                    break;
+                }
             }
 
             //show the players cards
@@ -72,12 +75,12 @@ public class Mechanics {
             }
 
             // this added for check the computer pisti scanner
-            System.out.println("-----------computer cards-----------");
-            for (int i = 0; i < 4; i++) {
-                if (computer4Card[i] != null) {
-                    System.out.println(computer4Card[i]);
-                }
-            }
+//            System.out.println("-----------computer cards-----------");
+//            for (int i = 0; i < 4; i++) {
+//                if (computer4Card[i] != null) {
+//                    System.out.println(computer4Card[i]);
+//                }
+//            }
 
             //take input from player
             //control the input
