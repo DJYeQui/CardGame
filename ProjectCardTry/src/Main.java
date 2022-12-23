@@ -7,8 +7,8 @@ public class Main {
         // game process
         for (int index = 0; index < 6; index++) {
             Game.preparationGame(); //
-            Game.playCards();
-        }
+            Game.playCards();}
+        Game.lastCardsCollectedByWinner();
 
         //for score list
         int playerScore = Game.getPlayScore();
