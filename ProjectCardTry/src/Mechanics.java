@@ -26,6 +26,8 @@ public class Mechanics {
         for (int cardIndexPlayer = 0; cardIndexPlayer < 4; cardIndexPlayer++) {
             player4Card[cardIndexPlayer] = mixed48Card[preparationGameCardsDistribute] + " = " + cardIndexPlayer + "th";   // 3,11,19,27,35,43
             preparationGameCardsDistribute++;    // last element indexes values: 4,12,20,28,36,44
+
+
         }
 
         // computer4Card elements added
@@ -112,10 +114,7 @@ public class Mechanics {
             if (lastElementMiddleCollectedCard() >= 2) {
                 pointCounterComputer();
             }
-
-
         }
-
     }
 
 
