@@ -4,6 +4,7 @@ public class Mechanics {
     private int playerScore = 0;
     private int computerScore = 0;
     private int preparationGameCardsDistribute = 0;
+    private String whoWinLast = "";  // P means player = C means computer
     private String[] mixed48Card = new String[48];
     private String[] middleCollectedCard = new String[52];
     private String[] player4Card = new String[4];
@@ -169,6 +170,7 @@ public class Mechanics {
                     middleCollectedCard[i] = null;
                 }
 
+                whoWinLast = "C";
                 System.out.println("computer point: " + computerScore);
             }
         }
@@ -196,7 +198,7 @@ public class Mechanics {
                     playerScore = playerScore + point;
                     middleCollectedCard[i] = null;
                 }
-
+                whoWinLast = "P";
                 System.out.println("player point: " + playerScore);
             }
         }
@@ -273,6 +275,32 @@ public class Mechanics {
             counter++;
         }
         return counter;
+    }
+
+    public void lastCardsCollectedByWinner(){
+        if(whoWinLast.equals("P")){
+            for (int i = 0; middleCollectedCard[i] != null; i++) {
+                int point = cardValueList(middleCollectedCard[i]);
+                playerScore = playerScore + point;
+                middleCollectedCard[i] = null;
+            }
+            // that will delete
+            System.out.println("Last Elements sent to player score");
+            System.out.println("player point: " + playerScore);
+        }
+        else if (whoWinLast.equals("C")){
+            for (int i = 0; middleCollectedCard[i] != null; i++) {
+                int point = cardValueList(middleCollectedCard[i]);
+                computerScore = computerScore + point;
+                middleCollectedCard[i] = null;
+            }
+            // that will delete
+            System.out.println("cards which are in the middle sent to computer score");
+            System.out.println("computer point: " + computerScore);
+        }
+        else {
+            System.out.println("no one gain the points so cards stay in middle");
+        }
     }
 
     public int getPlayScore() {
