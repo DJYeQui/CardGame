@@ -28,14 +28,14 @@ public class Cards {
         String[] deck52 = card52();
         String storedOldVale;
 
-        for (int index = 0; index < 26; index++) {
+        for (int index = 0; index < 52; index++) {
             int randomNumber = arr.nextInt(52);
             storedOldVale = deck52[index];
             deck52[index] = deck52[randomNumber];
             deck52[randomNumber] = storedOldVale;
         }
 
-        //cut the cards 
+        //cut the cards
         int cuttingPosition = arr.nextInt(10,30);  //that random number 30 maks and 10 min that can customize
         String[] shuffle1 = new String[cuttingPosition];
         String[] shuffle2 = new String[52-cuttingPosition];
