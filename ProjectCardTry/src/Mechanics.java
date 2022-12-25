@@ -32,30 +32,34 @@ public class Mechanics {
         }
 
         // computer4Card elements added
-        for (int cardIndexPlayer = 0; cardIndexPlayer < 4; cardIndexPlayer++) {  //  7,15,23,31,39,47
-            computer4Card[cardIndexPlayer] = mixed48Card[preparationGameCardsDistribute] + " = " + cardIndexPlayer + "th";
+        for (int cardIndexPlayer = 0; cardIndexPlayer < 4; cardIndexPlayer++) {
+            computer4Card[cardIndexPlayer] = mixed48Card[preparationGameCardsDistribute] + " = " + cardIndexPlayer + "th"; //  7,15,23,31,39,47
             preparationGameCardsDistribute++;    // last elements indexes values: 8,16,24,32,40,48
         }
     }
 
 
+    /**
+     * step by step what will I do
+     * "♠10 = 2th" card assignment format
+     * for 4 times play this
+     *         //show the middle cards
+     *         //show the players cards
+     *         //take input from player
+     *         //control the input
+     *         //control is there card in player card
+     *         //find the last element of middleCollectedCard
+     *         //send the card to the middleCollectedCard
+     *         //card[i]=null
+     *         //check the points
+     *         //computer play card
+     *         //computer[i]=null
+     *         //check point
+     */
     public void playCards() {
 
-        // ♠10 = 2th
-        //for 4 times play this
-        //show the middle cards
-        //show the players cards
-        //take input from player
-        //control the input
-        //control is there card in player card
-        //find the last element of middleCollectedCard
-        //send the card to the middleCollectedCard
-        //card[i]=null
-        //check the points
-        //computer play card
-        //computer[i]=null
-        //check point
-        //------------------------------------------------------------------------------------------------------------//
+
+        //=====================================Player Process====================================//
 
         for (int index = 0; index < 4; index++) {
 
@@ -76,14 +80,6 @@ public class Mechanics {
                 }
             }
 
-            // this added for check the computer pisti scanner
-//            System.out.println("-----------computer cards-----------");
-//            for (int i = 0; i < 4; i++) {
-//                if (computer4Card[i] != null) {
-//                    System.out.println(computer4Card[i]);
-//                }
-//            }
-
             //take input from player
             //control the input
             int playerInput = controlCard();
@@ -102,8 +98,7 @@ public class Mechanics {
                 pointCounterPlayer();
             }
 
-
-            //==========================================Computer=============================================//
+            //================================Computer Process=============================//
             //Write AI for decide the card index as a computer
             //send the card to the middleCollectedCard
             //computer[i]=null
@@ -119,6 +114,12 @@ public class Mechanics {
     }
 
 
+    /**
+     //==========================================Computer=============================================//
+     *             //Write AI for decide the card index as a computer
+     *             //send the card to the middleCollectedCard
+     *             //computer[i]=null
+     */
     public void computerPlayCard() {
         int lastElementMiddleCollectedCardAfterPlayer = lastElementMiddleCollectedCard();
         boolean controlWhichOneExecute = false;
