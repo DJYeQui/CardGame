@@ -12,8 +12,8 @@ public class Main {
 
         //for score list
         int playerScore = Game.getPlayScore();
-        int computerScore = Game.getComputerScore();
-        ScoreList scoreList = new ScoreList(playerScore, computerScore);
-
+//        int computerScore = Game.getComputerScore();   / that will delete
+        ScoreList scoreList = new ScoreList(playerScore);
+        scoreList.scoreList();
     }
 }
