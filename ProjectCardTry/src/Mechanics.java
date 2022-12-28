@@ -60,7 +60,6 @@ public class Mechanics {
 
 
         //=====================================Player Process====================================//
-
         for (int index = 0; index < 4; index++) {
 
             //show the middle cards
@@ -80,16 +79,16 @@ public class Mechanics {
                 }
             }
 
-            //take input from player
-            //control the input
+            /*** take input from player
+             * control the input*/
             int playerInput = controlCard();
 
-            //find the last element of middleCollectedCard
-            //this method find the first null element index in array/ I can use directly for declare something
+            /*** find the last element of middleCollectedCard
+             * this method find the first null element index in array/ I can use directly for declare something*/
             int lastElementOfMiddleCollectedCardArray = lastElementMiddleCollectedCard();
 
-            //send the card to the middleCollectedCard
-            //card[i]=null
+            /*** send the card to the middleCollectedCard
+             * card[i]=null*/
             middleCollectedCard[lastElementOfMiddleCollectedCardArray] = player4Card[playerInput];
             player4Card[playerInput] = null;
 
@@ -98,28 +97,20 @@ public class Mechanics {
                 pointCounterPlayer();
             }
 
-            //================================Computer Process=============================//
-            //Write AI for decide the card index as a computer
-            //send the card to the middleCollectedCard
-            //computer[i]=null
+            /*** ================================Computer Process=============================//
+             * Write AI for decide the card index as a computer
+             * send the card to the middleCollectedCard
+             * computer[i]=null*/
             computerPlayCard();
 
-
-            //check the points computer
-            //for prevent the null error if added
+            /***check the points computer
+             * for prevent the null error if added*/
             if (lastElementMiddleCollectedCard() >= 2) {
                 pointCounterComputer();
             }
         }
     }
 
-
-    /**
-     //==========================================Computer=============================================//
-     *             //Write AI for decide the card index as a computer
-     *             //send the card to the middleCollectedCard
-     *             //computer[i]=null
-     */
     public void computerPlayCard() {
         int lastElementMiddleCollectedCardAfterPlayer = lastElementMiddleCollectedCard();
         boolean controlWhichOneExecute = false;
@@ -160,7 +151,7 @@ public class Mechanics {
                 middleCollectedCard[i] = null;
             }
 
-            System.out.println("computer point: " + computerScore);
+            System.err.println("PISTI computer point: " + computerScore);
 
         } else {
             if (middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
@@ -172,7 +163,7 @@ public class Mechanics {
                 }
 
                 whoWinLast = "C";
-                System.out.println("computer point: " + computerScore);
+                System.err.println("computer point: " + computerScore);
             }
         }
 
@@ -190,7 +181,7 @@ public class Mechanics {
                 middleCollectedCard[i] = null;
             }
 
-            System.out.println("player point: " + playerScore);
+            System.err.println("PISTI player point: " + playerScore);
         } else {
             if (middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
 
@@ -200,7 +191,7 @@ public class Mechanics {
                     middleCollectedCard[i] = null;
                 }
                 whoWinLast = "P";
-                System.out.println("player point: " + playerScore);
+                System.err.println("player point: " + playerScore);
             }
         }
     }
@@ -218,7 +209,7 @@ public class Mechanics {
     public int controlCard() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Pls enter cards order number which is written next to the card");
-        int takenInput;
+        int takenInput = 0;
 
         //input type and interval control
         try {
@@ -244,6 +235,7 @@ public class Mechanics {
         //control is there card in player cards
         try {
             int lengthOfElementSelected = player4Card[controlledIndex].length();
+
             char selectedCard = player4Card[controlledIndex].charAt(lengthOfElementSelected - 3);
 
             int numSelected = Character.valueOf(selectedCard);
@@ -265,6 +257,8 @@ public class Mechanics {
 
             }
         } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.toString());
             System.out.println("there is a problem try again");
         }
         return false;
