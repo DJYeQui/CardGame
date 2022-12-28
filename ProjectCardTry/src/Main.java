@@ -10,10 +10,17 @@ public class Main {
             Game.playCards();}
         Game.lastCardsCollectedByWinner();
 
-        //for score list
+        //data which created after game process
         int playerScore = Game.getPlayScore();
-//        int computerScore = Game.getComputerScore();   / that will delete
+        int computerScore = Game.getComputerScore();
         ScoreList scoreList = new ScoreList(playerScore);
+
+        //who win
+        if(playerScore>computerScore){System.err.println("winner player");}
+        else if(playerScore<computerScore){System.err.println("winner computer");}
+        else {System.err.println("there is no winner");}
+
+        //score list
         scoreList.scoreList();
     }
 }
