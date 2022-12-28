@@ -42,11 +42,11 @@ public class ScoreList {
 
             while (reader.hasNextLine()){
                 String[] oldListValues = reader.nextLine().split(" ");
-                if (counterExecution<=11){
+                if (counterExecution<=10){
                     for (int index = 0;  index<2; index++){
-                        if (listPlayerNamePoint[index][0]==null && listPlayerNamePoint[index][1]==null){
-                            listPlayerNamePoint[index][0]=Integer.toString(0);
-                            listPlayerNamePoint[index][1]=Integer.toString(0);
+                        if (listPlayerNamePoint[counterExecution][0]==null && listPlayerNamePoint[counterExecution][1]==null){
+                            listPlayerNamePoint[counterExecution][0]=Integer.toString(0);
+                            listPlayerNamePoint[counterExecution][1]=Integer.toString(0);
                         }
                         listPlayerNamePoint[counterExecution][index]=oldListValues[index];
                     }
@@ -108,10 +108,6 @@ public class ScoreList {
             deleteAllText. format(" ");
 
             for (int i =0; i<10;i++){
-                if (listInOrder[i][0]==null && listInOrder[i][1]==null){
-                    listInOrder[i][0]=Integer.toString(0);
-                    listInOrder[i][1]=Integer.toString(0);
-                }
                 f. format("%s %s\n",listInOrder[i][0],listInOrder[i][1]);
             }
 
