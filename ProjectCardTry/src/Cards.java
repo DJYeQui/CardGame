@@ -18,6 +18,7 @@ public class Cards {
             }
         }
 
+        System.out.println("cards are created");
         return card52;
     }
 
@@ -34,6 +35,7 @@ public class Cards {
             deck52[index] = deck52[randomNumber];
             deck52[randomNumber] = storedOldVale;
         }
+        System.out.println("cards shuffled");
 
         //cut the cards
         int cuttingPosition = arr.nextInt(10,30);  //that random number 30 maks and 10 min that can customize
@@ -43,6 +45,8 @@ public class Cards {
         System.arraycopy(deck52,cuttingPosition,shuffle2,0,52-cuttingPosition);
         System.arraycopy(shuffle2,0,deck52,0,52-cuttingPosition);
         System.arraycopy(shuffle1,0,deck52,(52-cuttingPosition),cuttingPosition);
+        System.out.println("cut process finished");
+        System.out.println("cut are ready to play");
 
         return deck52;
     }
