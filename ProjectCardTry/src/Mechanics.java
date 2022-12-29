@@ -213,11 +213,13 @@ public class Mechanics {
 
         //input type and interval control
         try {
-            takenInput = sc.nextInt();
-            if (takenInput >= 4 || takenInput < 0) {
-                System.out.println("input have to be in [0,4) interval");
-                controlCard();
+            while (true){
+                takenInput = sc.nextInt();
+                if (takenInput >= 4 || takenInput < 0) {
+                    System.out.println("input have to be in [0,4) interval");
+                }else{break;}
             }
+
         } catch (Exception e) {
             System.out.println("this input can not use");
             return controlCard();
@@ -234,10 +236,9 @@ public class Mechanics {
     public boolean isThereCardSelected(int controlledIndex) {
         //control is there card in player cards
         try {
+
             int lengthOfElementSelected = player4Card[controlledIndex].length();
-
             char selectedCard = player4Card[controlledIndex].charAt(lengthOfElementSelected - 3);
-
             int numSelected = Character.valueOf(selectedCard);
 
             // if ith element is null that create a problem so I used try catch for solve it
@@ -258,7 +259,6 @@ public class Mechanics {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.toString());
             System.out.println("there is a problem try again");
         }
         return false;
@@ -281,7 +281,6 @@ public class Mechanics {
             }
             // that will delete
             System.out.println("Last Elements sent to player score");
-            System.out.println("player point: " + playerScore);
         }
         else if (whoWinLast.equals("C")){
             for (int i = 0; middleCollectedCard[i] != null; i++) {
@@ -291,7 +290,6 @@ public class Mechanics {
             }
             // that will delete
             System.out.println("cards which are in the middle sent to computer score");
-            System.out.println("computer point: " + computerScore);
         }
         else {
             System.out.println("no one gain the points so cards stay in middle");
