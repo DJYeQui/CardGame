@@ -1,8 +1,8 @@
-fatr 27
-ali 26
-as 25
-fafafa 10
-ass 5
+fatr  27
+ali  26
+as  25
+fafafa  10
+ass  5
 0 0
 0 0
 0 0
