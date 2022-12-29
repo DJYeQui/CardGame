@@ -42,7 +42,7 @@ public class ScoreList {
             int counterExecution = 0;
 
             while (reader.hasNextLine()) {
-                String[] oldListValues = reader.nextLine().split(" ");
+                String[] oldListValues = reader.nextLine().split("  ");
                 if (counterExecution <= 10) {
                     for (int index = 0; index < 2; index++) {
                         if (listPlayerNamePoint[counterExecution][0] == null && listPlayerNamePoint[counterExecution][1] == null) {
@@ -110,7 +110,7 @@ public class ScoreList {
             deleteAllText.format(" ");
 
             for (int i = 0; i < 10; i++) {
-                f.format("%s %s\n", listInOrder[i][0], listInOrder[i][1]);
+                f.format("%s  %s\n", listInOrder[i][0], listInOrder[i][1]);
             }
 
             fw.close();
@@ -127,7 +127,7 @@ public class ScoreList {
         Scanner sc = new Scanner(System.in);
         System.out.println("YOU WINN CONG. pls enter your first name");
         String name = sc.nextLine();
-        String[] playerComplexName = name.split(" ");
+        String[] playerComplexName = name.split("  ");
         return playerComplexName[0];
     }
 }
