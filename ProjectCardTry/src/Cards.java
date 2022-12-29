@@ -29,11 +29,13 @@ public class Cards {
         String[] deck52 = card52();
         String storedOldVale;
 
-        for (int index = 0; index < 52; index++) {
-            int randomNumber = arr.nextInt(52);
-            storedOldVale = deck52[index];
-            deck52[index] = deck52[randomNumber];
-            deck52[randomNumber] = storedOldVale;
+        for (int i = 0; i<4; i++){
+            for (int index = 0; index < 52; index++) {
+                int randomNumber = arr.nextInt(52);
+                storedOldVale = deck52[index];
+                deck52[index] = deck52[randomNumber];
+                deck52[randomNumber] = storedOldVale;
+            }
         }
         System.out.println("cards shuffled");
 
