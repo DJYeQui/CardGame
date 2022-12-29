@@ -119,7 +119,7 @@ public class Mechanics {
         if (lastElementMiddleCollectedCardAfterPlayer >= 1) {
             for (int i = 0; i < 4; i++) {
                 if (computer4Card[i] != null) {
-                    if (computer4Card[i].substring(1, 3).equals(middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer - 1].substring(1, 3))) {
+                    if (computer4Card[i].substring(1, 3).equals(middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer - 1].substring(1, 3)) || computer4Card[i].substring(1, 3).equals("J ")) {
                         middleCollectedCard[lastElementMiddleCollectedCardAfterPlayer] = computer4Card[i];
                         computer4Card[i] = null;
                         controlWhichOneExecute = true;
@@ -150,10 +150,19 @@ public class Mechanics {
                 computerScore = computerScore + point;
                 middleCollectedCard[i] = null;
             }
-
+            whoWinLast = "C";
             System.err.println("PISTI computer point: " + computerScore);
 
-        } else {
+        }else if(middleCollectedCard[lastElementIndex - 1].substring(1,3).equals("J ") && middleCollectedCard[lastElementIndex - 1].length()==8){
+            for (int i = 0; middleCollectedCard[i] != null; i++) {
+                int point = cardValueList(middleCollectedCard[i]);
+                computerScore = computerScore + point;
+                middleCollectedCard[i] = null;
+            }
+            whoWinLast = "C";
+            System.err.println("computer point: " + computerScore);
+        }
+        else {
             if (middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
 
                 for (int i = 0; middleCollectedCard[i] != null; i++) {
@@ -180,9 +189,19 @@ public class Mechanics {
                 playerScore = playerScore + point;
                 middleCollectedCard[i] = null;
             }
+            whoWinLast = "P";
+            System.err.println("player point: " + playerScore);
 
-            System.err.println("PISTI player point: " + playerScore);
-        } else {
+        }else if(middleCollectedCard[lastElementIndex - 1].substring(1,3).equals("J ") && middleCollectedCard[lastElementIndex - 1].length()==8){
+            for (int i = 0; middleCollectedCard[i] != null; i++) {
+                int point = cardValueList(middleCollectedCard[i]);
+                playerScore = playerScore + point;
+                middleCollectedCard[i] = null;
+            }
+            whoWinLast = "P";
+            System.err.println("player point: " + playerScore);
+        }
+        else {
             if (middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
 
                 for (int i = 0; middleCollectedCard[i] != null; i++) {
@@ -209,7 +228,7 @@ public class Mechanics {
     public int controlCard() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Pls enter cards order number which is written next to the card");
-        int takenInput = 0;
+        int takenInput=0;
 
         //input type and interval control
         try {
@@ -258,7 +277,6 @@ public class Mechanics {
 
             }
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("there is a problem try again");
         }
         return false;
