@@ -67,7 +67,7 @@ public class Mechanics {
             for (int i = 51; i >= 0; i--) {
                 if (middleCollectedCard[i] != null) {
                     System.out.println(middleCollectedCard[i].substring(0, 3));
-//                    break;
+                    break;
                 }
             }
 
@@ -157,7 +157,7 @@ public class Mechanics {
                 middleCollectedCard[i] = null;
             }
             whoWinLast = "C";
-            System.err.println("PISTI computer point: " + computerScore);
+            System.out.println("PISTI computer point: " + computerScore);
 
         }else if(middleCollectedCard[lastElementIndex - 1].substring(1,3).equals("J ") && middleCollectedCard[lastElementIndex - 1].length()==8){
             for (int i = 0; middleCollectedCard[i] != null; i++) {
@@ -166,7 +166,7 @@ public class Mechanics {
                 middleCollectedCard[i] = null;
             }
             whoWinLast = "C";
-            System.err.println("computer point: " + computerScore);
+            System.out.println("computer point: " + computerScore);
         }
         else {
             if (middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
@@ -178,7 +178,7 @@ public class Mechanics {
                 }
 
                 whoWinLast = "C";
-                System.err.println("computer point: " + computerScore);
+                System.out.println("computer point: " + computerScore);
             }
         }
 
@@ -196,7 +196,7 @@ public class Mechanics {
                 middleCollectedCard[i] = null;
             }
             whoWinLast = "P";
-            System.err.println("player point: " + playerScore);
+            System.out.println("PISTI player point: " + playerScore);
 
         }else if(middleCollectedCard[lastElementIndex - 1].substring(1,3).equals("J ") && middleCollectedCard[lastElementIndex - 1].length()==8){
             for (int i = 0; middleCollectedCard[i] != null; i++) {
@@ -205,7 +205,7 @@ public class Mechanics {
                 middleCollectedCard[i] = null;
             }
             whoWinLast = "P";
-            System.err.println("player point: " + playerScore);
+            System.out.println("player point: " + playerScore);
         }
         else {
             if (middleCollectedCard[lastElementIndex - 1].substring(1, 3).equals(middleCollectedCard[lastElementIndex - 2].substring(1, 3))) {
@@ -216,7 +216,7 @@ public class Mechanics {
                     middleCollectedCard[i] = null;
                 }
                 whoWinLast = "P";
-                System.err.println("player point: " + playerScore);
+                System.out.println("player point: " + playerScore);
             }
         }
     }
@@ -321,16 +321,11 @@ public class Mechanics {
     }
 
     public int getPlayScore() {
-        if (whoWinLast.equals("P")){
-            return playerScore-2;}
-
-        else {return playerScore;}
+        return playerScore;
     }
 
     public int getComputerScore() {
-        if (whoWinLast.equals("C")){
-            return computerScore-2;}
 
-        else {return computerScore;}
+        return computerScore;
     }
 }
