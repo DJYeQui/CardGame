@@ -67,7 +67,7 @@ public class Mechanics {
             for (int i = 51; i >= 0; i--) {
                 if (middleCollectedCard[i] != null) {
                     System.out.println(middleCollectedCard[i].substring(0, 3));
-                    break;
+//                    break;
                 }
             }
 
@@ -76,6 +76,12 @@ public class Mechanics {
             for (int i = 0; i < 4; i++) {
                 if (player4Card[i] != null) {
                     System.out.println(player4Card[i]);
+                }
+            }
+            System.out.println("-----------computer cards-----------");
+            for (int i = 0; i < 4; i++) {
+                if (computer4Card[i] != null) {
+                    System.out.println(computer4Card[i]);
                 }
             }
 
@@ -298,7 +304,7 @@ public class Mechanics {
                 middleCollectedCard[i] = null;
             }
             // that will delete
-            System.out.println("Last Elements sent to player score");
+            System.out.println("Last Elements sent to player score ");
         }
         else if (whoWinLast.equals("C")){
             for (int i = 0; middleCollectedCard[i] != null; i++) {
@@ -307,7 +313,7 @@ public class Mechanics {
                 middleCollectedCard[i] = null;
             }
             // that will delete
-            System.out.println("cards which are in the middle sent to computer score");
+            System.out.println("Last Elements sent to computer score ");
         }
         else {
             System.out.println("no one gain the points so cards stay in middle");
@@ -315,10 +321,16 @@ public class Mechanics {
     }
 
     public int getPlayScore() {
-        return playerScore;
+        if (whoWinLast.equals("P")){
+            return playerScore-2;}
+
+        else {return playerScore;}
     }
 
     public int getComputerScore() {
-        return computerScore;
+        if (whoWinLast.equals("C")){
+            return computerScore-2;}
+
+        else {return computerScore;}
     }
 }
