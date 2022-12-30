@@ -1,55 +1,29 @@
-import java.util.Random;
+public class Main {
+    public static void main(String[] args) {
+        Cards Card = new Cards();
+        String[] mixedCards = Card.mix52Cards();
+        Mechanics Game = new Mechanics(mixedCards);
 
-public class Cards {
-    private String[] cardsValue = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "A", "J", "Q", "K"};
-    private String[] cardsShapes = {"♠", "♣", "♥", "♦"};
+        // game process
+        for (int index = 0; index < 6; index++) {
+            Game.preparationGame(); //
+            Game.playCards();}
+        Game.lastCardsCollectedByWinner();
 
+        //data which created after game process
+        int playerScore = Game.getPlayScore();
+        int computerScore = Game.getComputerScore();
+        ScoreList scoreList = new ScoreList(playerScore);
 
-    public String[] card52() {
-        String[] card52 = new String[52];
-        String combineValueShape;
-        int indexCounter = 0;
+        // PC PLAYER POINTS
+        System.out.println("player score: "+playerScore);
+        System.out.println("computer score: "+computerScore);
 
-        for (String shape : cardsShapes) {
-            for (String values : cardsValue) {
-                combineValueShape = shape + values;
-                card52[indexCounter] = combineValueShape;
-                indexCounter++;
-            }
+        if(playerScore>computerScore){System.err.println("winner player");
+            //score list
+            scoreList.scoreList();
         }
-
-        System.out.println("cards are created");
-        return card52;
-    }
-
-
-    public String[] mix52Cards() {
-
-        Random arr = new Random(System.currentTimeMillis());
-        String[] deck52 = card52();
-        String storedOldVale;
-
-        for (int i = 0; i<4; i++){
-            for (int index = 0; index < 52; index++) {
-                int randomNumber = arr.nextInt(52);
-                storedOldVale = deck52[index];
-                deck52[index] = deck52[randomNumber];
-                deck52[randomNumber] = storedOldVale;
-            }
-        }
-        System.out.println("cards shuffled");
-
-        //cut the cards
-        int cuttingPosition = arr.nextInt(10,30);  //that random number 30 maks and 10 min that can customize
-        String[] shuffle1 = new String[cuttingPosition];
-        String[] shuffle2 = new String[52-cuttingPosition];
-        System.arraycopy(deck52,0,shuffle1,0,cuttingPosition);
-        System.arraycopy(deck52,cuttingPosition,shuffle2,0,52-cuttingPosition);
-        System.arraycopy(shuffle2,0,deck52,0,52-cuttingPosition);
-        System.arraycopy(shuffle1,0,deck52,(52-cuttingPosition),cuttingPosition);
-        System.out.println("cut process finished");
-        System.out.println("cut are ready to play");
-
-        return deck52;
+        else if(playerScore<computerScore){System.err.println("winner computer");}
+        else {System.err.println("there is no winner");}
     }
 }
