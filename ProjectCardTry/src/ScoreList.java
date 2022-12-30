@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Formatter;
@@ -19,9 +20,7 @@ import java.nio.file.Paths;
 public class ScoreList {
     private int playerScore;
 
-    public ScoreList(int pScore) {
-        playerScore = pScore;
-    }
+    public ScoreList(int pScore) {playerScore = pScore;}
 
     public void scoreList() {
 
