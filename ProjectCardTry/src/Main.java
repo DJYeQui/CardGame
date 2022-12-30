@@ -18,7 +18,7 @@ public class Main {
         // PC PLAYER POINTS
         System.out.println("player score: "+playerScore);
         System.out.println("computer score: "+computerScore);
-        //who win
+
         if(playerScore>computerScore){System.err.println("winner player");
             //score list
             scoreList.scoreList();
