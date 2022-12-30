@@ -110,6 +110,11 @@ public class ScoreList {
             deleteAllText.format(" ");
 
             for (int i = 0; i < 10; i++) {
+                if (listInOrder[i][0]==null || listInOrder[i][1]==null){
+                    String zero = "0";
+                    listInOrder[i][0]=zero;
+                    listInOrder[i][1]=zero;
+                }
                 f.format("%s  %s\n", listInOrder[i][0], listInOrder[i][1]);
             }
 
