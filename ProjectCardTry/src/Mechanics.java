@@ -78,12 +78,6 @@ public class Mechanics {
                     System.out.println(player4Card[i]);
                 }
             }
-            System.out.println("-----------computer cards-----------");
-            for (int i = 0; i < 4; i++) {
-                if (computer4Card[i] != null) {
-                    System.out.println(computer4Card[i]);
-                }
-            }
 
             /*** take input from player
              * control the input*/
